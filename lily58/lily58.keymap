@@ -1,0 +1,54 @@
+/*
+ * Lily58 keymap, read from the keyboard's ZMK Studio settings on 2026-11-27.
+ * Every binding matches what was on the board. Volume keys use the
+ * keyboard-page codes (K_VOL_UP/K_VOL_DN) exactly as stored on the board.
+ * The encoder (sensor-bindings) is not stored by Studio, so it keeps keebd's default.
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+            &kp GRAVE     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &kp BSPC
+            &kp ESC       &kp Q         &kp W         &kp E         &kp R         &kp T           &kp Y         &kp U         &kp I         &kp O         &kp P         &kp MINUS
+            &kp TAB       &kp A         &kp S         &kp D         &kp F         &kp G           &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp SQT
+            &kp LSHFT     &kp Z         &kp X         &kp C         &kp V         &kp B         &kp C_PP        &kp K_VOL_DN  &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      &kp RCTRL
+                                        &kp LALT      &kp LGUI      &mo 1         &kp RET         &kp SPACE     &mo 2         &kp RALT      &kp RSHFT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_layer {
+            bindings = <
+            &kp TILDE        &kp EXCL         &kp AT           &kp HASH         &kp DOLLAR       &kp PRCNT          &kp CARET        &kp AMPS         &kp ASTRK        &kp LPAR         &kp RPAR         &trans
+            &trans           &kp EXCL         &kp AT           &kp HASH         &kp DOLLAR       &kp LPAR           &kp RPAR         &kp AMPS         &kp ASTRK        &kp LPAR         &kp RPAR         &kp LS(KP_PLUS)
+            &trans           &trans           &trans           &trans           &kp PRCNT        &kp LBRC           &kp RBRC         &kp MINUS        &kp EQUAL        &kp LPAR         &kp RPAR         &kp EQUAL
+            &trans           &bt BT_CLR       &bt BT_NXT       &trans           &trans           &kp LBKT         &trans             &trans           &kp RBKT         &kp UNDER        &kp LT           &kp GT           &kp BSLH         &kp PIPE
+                                              &trans           &trans           &trans           &kp SPACE          &trans           &trans           &trans           &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        raise_layer {
+            bindings = <
+            &trans        &kp F1        &kp F2        &kp F3        &kp F4        &kp F5          &kp F6        &kp F7        &kp F8        &kp F9        &kp F10       &kp F11
+            &trans        &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &kp F12
+            &trans        &kp F2        &kp F3        &kp F4        &kp C_PREV    &kp C_NEXT      &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT     &trans        &trans
+            &trans        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12       &trans          &kp K_VOL_UP  &kp KP_PLUS   &kp MINUS     &kp EQUAL     &kp LBKT      &kp BSLH      &kp PIPE
+                                        &trans        &trans        &trans        &trans          &kp RET       &trans        &trans        &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+    };
+};

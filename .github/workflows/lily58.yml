@@ -1,0 +1,20 @@
+name: Build Lily58 firmware
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/lily58.yml
+      - lily58/**
+  pull_request:
+    paths:
+      - .github/workflows/lily58.yml
+      - lily58/**
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: lily58/build.yaml
+      config_path: lily58
+      archive_name: lily58-firmware

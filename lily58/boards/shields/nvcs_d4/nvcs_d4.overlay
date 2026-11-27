@@ -1,0 +1,8 @@
+/*
+ * Add-on shield for keebd's newer Lily58 revision, which moved the nice!view
+ * chip-select from D1 to D4. List it after nice_view_adapter so this wins.
+ */
+
+&nice_view_spi {
+    cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
+};

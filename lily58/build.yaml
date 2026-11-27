@@ -1,0 +1,30 @@
+# Lily58 build matrix (used by .github/workflows/lily58.yml).
+#
+# keebd made two board revisions that wire the nice!view display's CS pin
+# differently. The keys work the same on both. If the displays stay blank
+# with the first pair, flash the "_cs_d4" pair instead.
+---
+include:
+  # Most boards: display CS on D1 (stock nice_view_adapter)
+  - board: mikoto@7.2//zmk
+    shield: lily58_left nice_view_adapter nice_view
+    snippet: studio-rpc-usb-uart
+    artifact-name: lily58_left-mikoto
+  - board: mikoto@7.2//zmk
+    shield: lily58_right nice_view_adapter nice_view
+    artifact-name: lily58_right-mikoto
+
+  # Newer revision: display CS moved to D4
+  - board: mikoto@7.2//zmk
+    shield: lily58_left nice_view_adapter nice_view nvcs_d4
+    snippet: studio-rpc-usb-uart
+    artifact-name: lily58_left-mikoto_cs_d4
+  - board: mikoto@7.2//zmk
+    shield: lily58_right nice_view_adapter nice_view nvcs_d4
+    artifact-name: lily58_right-mikoto_cs_d4
+
+  # Clears pairings and Studio changes. Flash to both halves before the new
+  # firmware so they pair fresh.
+  - board: mikoto@7.2//zmk
+    shield: settings_reset
+    artifact-name: settings_reset-mikoto
