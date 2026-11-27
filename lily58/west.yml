@@ -1,0 +1,14 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      # Pinned to the ZMK commit keebd builds its Lily58 firmware from, so this
+      # build doesn't change when ZMK main moves. Kept separate from the Corne's
+      # config/west.yml, which still tracks main.
+      revision: 64daf698e073e37b6748ac54f4eb48d8666af0b9
+      import: app/west.yml
+  self:
+    path: lily58
